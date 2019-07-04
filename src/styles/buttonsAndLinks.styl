@@ -1,0 +1,83 @@
+//--------------------------------------
+// HAMBERDERS
+// -------------------------------------
+.hamburger-inner, .hamburger-inner:after, .hamburger-inner:before, .hamburger.is-active .hamburger-inner, .hamburger.is-active .hamburger-inner:after, .hamburger.is-active .hamburger-inner:before {
+  background: white !important;
+}
+
+
+
+//--------------------------------------
+// BUTT-STYLES
+// -------------------------------------
+
+
+.clicker
+    display block;
+    text-align: center;
+    padding: 1.5rem 0
+    transition: background-color .3s ease-in-out
+    margin-bottom: 2rem
+    &.schwarz
+      background-color vblack
+      &:hover 
+        background-color darken(vblack, 20%)
+    &.blau
+      background-color vblue
+      &:hover 
+        background-color darken(vblue, 20%)
+    &.hellgruen
+      background-color vlightgreen
+      &:hover 
+        background-color darken(vlightgreen, 20%)
+    &.gruen
+      background-color vgreen
+      &:hover 
+        background-color darken(vgreen, 20%)
+    &.dunkelgruen
+      background-color vdarkgreen
+      &:hover 
+        background-color darken(vdarkgreen, 20%)
+    &.rot
+      background-color vred 
+      &:hover 
+        background-color darken(vred, 20%)
+
+.hamburger-inner, .hamburger-inner:after, .hamburger-inner:before
+    background-color white
+
+//--------------------------------------
+// TABLES
+// -------------------------------------
+table 
+  width: 100%
+  margin-bottom: 1rem
+  thead 
+    font-weight: bold
+  tr 
+    border-bottom: solid white 1px
+
+
+//--------------------------------------
+// EFFING FONTS
+// -------------------------------------
+input
+  width: 80%
+  color: white
+  text-align: center 
+  text-transform: uppercase
+  border  : none;
+  padding : 0 10px;
+  margin  : 0;
+  background   : rgba(0,0,0,.1);
+  outline      : none;
+  font-size: 1rem
+  &::placeholder 
+    font-size: .75rem
+    font-family: Verdana, Geneva, Tahoma, sans-serif
+    color: white
+    text-align: center
+input:focus {
+  background   : rgba(0,0,0,.3);
+
+}

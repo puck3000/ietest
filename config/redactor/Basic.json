@@ -1,0 +1,22 @@
+{
+    "buttons": ["html", "format", "bold", "italic", "lists", "file", "link", "file"],
+    "formatting": ["p"],
+    "formattingAdd": {
+        "Titel": {
+            "title": "Titel",
+            "api": "module.block.format",
+            "args": {
+                "tag": "h2"
+            }
+        },
+        "Datum": {
+            "title": "Datum",
+            "api": "module.block.format",
+            "args": {
+                "tag": "span",
+                "class": "datum"
+            }
+        }
+    },
+    "linkNewTab": "true"
+}

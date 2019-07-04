@@ -1,0 +1,14 @@
+<div class="heroParallax">
+
+{% set herotext = entry.text %}
+{% set parallaxImages = [] %}
+{% for parallaxImage in craft.assets.volumeId(1).folderId(7).all()  %}
+{% set parallaxImages = parallaxImages|merge([{
+    url: parallaxImage.url
+}]) %}
+{% endfor %}
+    
+<hero-parallax :herotext="{{herotext|json_encode}}" :parallaximages="{{parallaxImages|json_encode}}"></hero-parallax>
+
+</div>
+

@@ -1,0 +1,19 @@
+{% extends "layouts/_layout.twig" %}
+{% set activeNav = ''%}
+
+{% block content %}
+<main>
+{% for entry in craft.entries.section('newsEintrag').all() %}
+    <div class="post-preview">
+        <a href="{{entry.url}}">
+        <h2>{{entry.title}}</h2></a>
+    </div>
+
+
+{% endfor %}
+
+
+
+</main>
+
+{% endblock %}

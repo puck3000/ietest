@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="{{craft.app.language}}">
+
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    {% if craft.app.language == 'de-CH' %}
+    gtag('config', 'UA-142374453-1');
+    {% elseif craft.app.language == 'fr-CH' %} 
+    gtag('config', 'UA-142388041-1');
+    {% elseif craft.app.language == 'it-CH' %} 
+    gtag('config', 'UA-142419442-1');
+    {% endif %}
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  {# <title>{{ siteName }}</title> #}
+  {% hook "seo" %}
+
+  {% if getenv('ENVIRONMENT') != 'dev' and getenv('ENVIRONMENT') != 'local' %}
+  <link rel="stylesheet" href="{{ rev('app.css') }}">
+  {% endif %}
+</head>
+
+<body>
+  <div id="app">
+  <general-styles></general-styles>
+  {% block header %}
+  {% include 'includes/header' %}
+  {% endblock %}
+
+  {% block content %}
+  {% endblock %}
+
+  {% block footer %}
+  {% include 'includes/footer' %}
+  {% endblock %}
+  </div>
+
+
+  {% if getenv('ENVIRONMENT') == 'dev' or getenv('ENVIRONMENT') == 'local' %}
+  <script src="http://localhost:8080/app.js"></script>
+  {% else %}
+  <script src="{{ rev('chunk-vendors.js') }}"></script>
+  <script src="{{ rev('app.js') }}"></script>
+  {% endif %}
+
+
+
+  <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll@15/dist/smooth-scroll.polyfills.min.js"></script>
+  <script>
+    var scroll = new SmoothScroll('a[href*="#"]', {
+      header: '[data-scroll-header]'
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+//--------------------------------------
+// FONT FAMILIES
+// -------------------------------------
+
+html
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+
+//--------------------------------------
+// Sizes and Colors
+// -------------------------------------
+
+
+html
+  line-height: 1.5
+  color: white;
+
+p, table, form, input, figcaption, li, a, .clicker 
+  font-size: 1rem
+  line-height: 1.5
+  em 
+    font-style: italic
+p 
+  margin-bottom: .75rem
+
+h1, h2, h3, h2 a
+  font-size: 1.5rem
+  line-height: 1.2
+  font-weight: bold
+
+a 
+  color: white;
+  text-decoration: none;
+.text p a 
+  text-decoration: underline
+
+strong 
+  font-weight: bold;
+
+.clicker 
+  font-weight: bold
+
+span.datum 
+  font-size: .75rem
+  position: absolute
+  top: 1rem
+  left: 2rem
+
+ 
+.text
+  ul 
+    padding-left: 2rem;
+    list-style-position: outside
+    li 
+      margin-bottom: .75rem
+      &:before
+        content: "–"
+        text-indent: -2rem
+        display: inline-block
+    
+  
+@media screen and (min-width: 900px)
+  h1, h2, h3, h2 a
+    font-size: 2.25rem
+  p, table, form, figcaption, li, a, .clicker
+    font-size: 1.3rem
+  input 
+    font-size: 1rem
+  header 
+    a 
+      font-size: .75rem
+@media screen and (min-width: 1250)
+  h1, h2, h3, h2 a 
+    font-size: 3rem
+  p, table, form, input, figcaption, li, a, .clicker
+    font-size: 2rem
+

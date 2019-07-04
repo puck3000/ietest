@@ -1,0 +1,22 @@
+{% set subnavPunkt = [] %}
+
+{% for block in entry.pageSection.level(1).all() %}
+    {% set anker = block.anker|url_encode %}
+    {% if (block.subnavigation.one().linkAktivieren) and (anker|length) %}
+        {% set subnavLinkText = block.subnavigation.one().linktext %}
+        {% set subnavPunkt = subnavPunkt|merge([{
+            linkText: subnavLinkText,
+            anchor: anker
+        }]) %}
+    {% endif %}
+{% endfor %}
+
+{% if subnavPunkt|length %}
+<ul id="subnav">
+    {% for menupunkt in subnavPunkt %}
+        <a data-scroll href="{{ "#%s"|format(menupunkt.anchor) }}">{{menupunkt.linkText}}</a>
+
+        {# <a href="{{ "%s#%s"|format(craft.request.getUrl(), menupunkt.anchor) }}">{{menupunkt.linkText}}</a> #}
+    {% endfor %}
+</ul>
+{% endif %}

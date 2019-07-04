@@ -1,0 +1,76 @@
+{% switch inhalt.type.handle %}
+                
+                    {% case "text" %}
+                        <div class="text">
+                            {{inhalt.text}}
+                        </div>
+                
+                    {% case "bild" %}
+
+                    {% set image = inhalt.bild.one() %}
+                    {% set transformedImages = craft.imager.transformImage(image,
+                        [
+                            { width: 1300, ratio: 2/1 },
+                            { width: 900, ratio: 4/3, jpegQuality: 65 },
+                        ],
+                        {
+                            format: 'jpg',
+                            allowUpscale: false,
+                            mode: 'crop',
+                            position: image.getFocalPoint(),
+                            jpegQuality: 80,
+                            interlace: true
+                        }
+                    ) %}
+                    
+                        <figure>
+                            <img class="lazyload"
+                                src="{{ craft.imager.base64Pixel(2,1) }}"
+                                data-sizes="100vw"
+                                data-srcset="{{ craft.imager.srcset(transformedImages) }}"
+                                alt="{{innhalt.bildbeschreibung | default('Bild ohne Beschreibung')}}">
+                            <figcaption>{{inhalt.bildunterschrift}}</figcaption>
+                        </figure>
+
+                    {% case "cta" %}
+                        <div class="cta">
+                            <a class="{{inhalt.farbe}} clicker " href="{{inhalt.verweis.url}}">{{inhalt.text}}</a>
+                        </div>
+
+                    {% case "weiche" %}
+                        <ul class="weiche">
+                            <li>
+                                <a class="{{inhalt.farbeA}} clicker" href="{{inhalt.linkA.url}}">{{inhalt.textA}}</a>
+                            </li>
+                            <li>
+                                <a class="{{inhalt.farbeB}} clicker" href="{{inhalt.linkB.url}}">{{inhalt.textB}}</a>
+                            </li>
+                        </ul>
+
+                    {% case "embed" %}
+                        {% set asset = inhalt.eingebetteteInhalte.one() %}
+                        {% set embed = craft.embeddedAssets.get(asset) %}
+
+                        
+                        {% if ('youtube' in embed|json_encode) or  ('vimeo' in embed|json_encode) %}
+                        
+                        <div class="embed responsive">
+                                    {{ embed.html }}
+                                </div>
+                        {% else %}
+                            
+                            {% if embed|length %}
+                                <div class="embed">
+                                    {{ embed.safeHtml|raw }}
+                                </div>
+                            {% endif %}
+
+                        {% endif %}
+
+                    {% case "tabelle" %}
+                        {{inhalt.tabelle.table}}
+            
+                    {% default %}
+                    
+                
+                {% endswitch %}

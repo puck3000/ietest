@@ -1,0 +1,5 @@
+{
+    "buttons": ["html", "format", "bold", "italic", "lists", "file", "link"],
+    "formatting": ["p", "blockquote", "h2"]
+}
+

@@ -1,0 +1,28 @@
+{% extends "layouts/_layout.twig" %}
+{% set activeNav = ''%}
+
+
+{% block content %}
+<main>
+
+{% include 'includes/subnav' %}
+
+
+
+{# setting home parallax  #}
+{# {% if (entry.section.handle == 'home') %}
+    {% if  entry.text|length %}
+        {% include 'includes/parallaxHero' %}
+    {% endif %}
+{% elseif entry.hero|length %}
+    {% include 'includes/hero' %}
+{% endif %} #}
+
+{# setting everything else #}
+{% if entry.pageSection|length %}
+    {% include 'includes/pageSection' %}
+{% endif %}
+
+
+</main>
+{% endblock %}

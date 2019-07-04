@@ -1,0 +1,20 @@
+<footer>
+    <div class="footerWrapper">
+        <div>
+            {{footer.footerleft}}
+        </div>
+        <div>
+            {{footer.footerright}}
+        </div>
+            {% if craft.app.language == 'de-CH' %}
+            <img id="logoBLW" src="{{ siteUrl }}/assets/fixies/Blw_blv_logo.svg" alt="Logo BLW">
+            {% elseif craft.app.language == 'fr-CH' %} 
+            <img id="logoBLW" src="{{ siteUrl }}/assets/fixies/Blw_blv_logo_F.svg" alt="Logo BLW">
+            {% elseif craft.app.language == 'it-CH' %} 
+            <img id="logoBLW" src="{{ siteUrl }}/assets/fixies/Blw_blv_logo_I.svg" alt="Logo BLW">
+            {% endif %}
+
+            <img id="logoID" src="{{ siteUrl }}/assets/fixies/id_Logo.svg" alt="Logo Identitas">
+        </div>
+    
+</footer>

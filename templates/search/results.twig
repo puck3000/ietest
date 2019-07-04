@@ -1,0 +1,91 @@
+{% extends "layouts/_layout.twig" %}
+{% set activeNav = ''%}
+
+{% if craft.app.language == 'de-CH' %}
+{% set eintrag = 'Eintrag in:' %}
+{% set suchbegriff = 'Suchbegriff' %}
+
+{% elseif craft.app.language == 'fr-CH' %} 
+{% set eintrag = 'Trouvé en: ' %}
+{% set suchbegriff = 'Terme de recherche' %}
+
+{% elseif craft.app.language == 'it-CH' %} 
+{% set eintrag = 'Trovato in: ' %}
+{% set suchbegriff = 'Termine di ricerca' %}
+
+{% endif %}
+
+
+{% block content %}
+<main id="suchresultate">
+
+<section class="blau suchresultate">
+
+
+{% set query = craft.app.request.getParam('q') %}
+{% set expandedResults = craft.expandedSearch.search(query) %}
+
+<h2>{{suchbegriff}}:<br>"{{query}}"</h2>
+
+
+{% if expandedResults|length %}
+
+    {% for result in expandedResults %}
+    <article>
+        <a href="{{result.entry.url}}">
+            <p class="frage">{{result.matchedValue|raw}}</p>
+            <p>{{eintrag}} {{result.entry.title}}</p>
+        </a>
+        <hr>
+    </article> 
+    {% endfor %}
+
+{% else %}
+    <p>ergab leider keine Resultate</p>
+{% endif %}
+
+
+
+{# <h1>Search Results</h1>
+
+{% set searchQuery = craft.app.request.getParam('q') %}
+{% set entries = craft.entries()
+    .search(searchQuery)
+    .orderBy('score')
+    .all() %}
+
+{% if entries|length %}
+    <p>{{ entries|length }} results:</p>
+
+    <ul>
+        {% for entry in entries %}
+            <li><a href="{{ entry.url }}">{{ entry.title }}</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Your search for “{{ searchQuery }}” didn’t return any results.</p>
+{% endif %} #}
+{# {% set query = craft.app.request.getParam('q') %}
+{% set expandedResults = craft.expandedSearch.search(query) %}
+{% for result in expandedResults %}
+    <h4>result.matchedField</h4>
+    {{result.matchedField}}
+    <h4>result.entry.title</h4>
+    {{result.entry.title}}
+    <h4>result.matchedValue</h4>
+    {{result.matchedValue}}
+    <h4>result.entry.url</h4>
+    {{result.entry.url}}
+    {# <strong data-field="{{result.matchedField}}">{{result.entry.title}}</strong><br>
+    <p>{{result.matchedValue}}</p>
+    <a href="{{result.entry.url}}">{{result.entry.url}}</a> #}
+{# {% else %}
+    <p>Sorry, no results for {{query}}.</p>
+{% endfor %} #} #}
+
+
+</section>
+
+</main>
+{% endblock %}
+

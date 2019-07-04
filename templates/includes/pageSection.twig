@@ -1,0 +1,13 @@
+
+
+{% for block in entry.pageSection.level(1).all() %}
+
+<section class="pageSection {{block.hintergrundfarbe|default('hellgruen')}} {{entry.title|url_encode}}" id="{{block.anker|url_encode}}">
+ 
+
+{% for inhalt in block.inhalte.all() %} 
+    {% include 'includes/inhalteSwitch' %}            
+{% endfor %}
+
+</section>
+{% endfor %}

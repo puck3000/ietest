@@ -1,0 +1,12 @@
+{% if craft.app.language == 'de-CH' %}
+{% set suche = 'Suche' %}
+{% elseif craft.app.language == 'fr-CH' %} 
+{% set suche = 'Recherche' %}
+{% elseif craft.app.language == 'it-CH' %} 
+{% set suche = 'Ricerca' %}
+{% endif %}
+
+
+<form action="{{ url('search/results') }}">
+    <input type="text" name="q" placeholder="{{suche}}" onfocus="this.placeholder = ''" >
+</form> 

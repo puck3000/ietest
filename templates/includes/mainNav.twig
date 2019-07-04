@@ -1,0 +1,16 @@
+<nav id="mainNav">
+    <ul>
+    {% for menupunkt in hauptnavigation.hauptnavigation.all() %}
+        {% if (craft.request.segments|first == menupunkt.menupunkt.entry.title|lower) or (craft.request.segments|first == '' and menupunkt.menupunkt.entry.title|lower == 'home') %}
+            {% set activeNav = 'active' %}
+        {% else %}
+            {% set activeNav = '' %}
+        {% endif %}
+        
+        <li class={{ activeNav }} >
+            {{menupunkt.menupunkt |raw}}
+        </li>
+    {% endfor %}
+    </ul>
+</nav>
+

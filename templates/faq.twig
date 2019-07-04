@@ -1,0 +1,40 @@
+{% extends "layouts/_layout.twig" %}
+{% set activeNav = ''%}
+
+{% if craft.app.language == 'de-CH' %}
+{% set suche = 'Fragen und Antworten durchsuchen' %}
+{% elseif craft.app.language == 'fr-CH' %} 
+{% set suche = 'Rechercher questions & réponses' %}
+{% elseif craft.app.language == 'it-CH' %} 
+{% set suche = 'Cerca domande & risposte' %}
+{% endif %}
+
+
+{% block content %}
+<main>
+
+{% if entry.hero|length %}
+    {% include 'includes/hero' %}
+{% endif %}
+
+<section class="pageSection hellgruen">
+
+{% set faqs = [] %}
+{% for article in entry.faq.all()%}
+
+{% set faqs = faqs|merge([{
+    frage: article.frage,
+    antwort: article.antwort
+}])  %}
+    
+{% endfor %}
+
+<faq-list :faqs="{{faqs|json_encode}}" :suche="{{suche|json_encode}}"></faq-list>
+
+</section>
+
+
+
+</main>
+
+{% endblock %}
