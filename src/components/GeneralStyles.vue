@@ -20,5 +20,6 @@ vlightgrey = #F5F2F1;
 @import '../styles/fonts.styl'
 @import '../styles/layout.styl'
 @import '../styles/buttonsAndLinks.styl'
+@import '../styles/iefixes.styl'
 
 </style>
