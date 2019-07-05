@@ -79,6 +79,9 @@ footer
 // helpers and hacks
 img // always responsive
   max-width: 100%;
+  @media all and (-ms-high-contrast:none) // iefix
+    width: 100%;
+
 main // hack for no css margin between sections
   font-size: 0
 

@@ -24,13 +24,21 @@
                     ) %}
                     
                         <figure>
+                            <img
+                                src="{{ transformedImages[1].url }}"
+                                sizes="100vw"
+                                srcset="{{ craft.imager.srcset(transformedImages) }}"
+                                alt="{{innhalt.bildbeschreibung | default('Bild ohne Beschreibung')}}">
+                            <figcaption>{{inhalt.bildunterschrift}}</figcaption>
+                        </figure>
+                        {# <figure>
                             <img class="lazyload"
                                 src="{{ craft.imager.base64Pixel(2,1) }}"
                                 data-sizes="100vw"
                                 data-srcset="{{ craft.imager.srcset(transformedImages) }}"
                                 alt="{{innhalt.bildbeschreibung | default('Bild ohne Beschreibung')}}">
                             <figcaption>{{inhalt.bildunterschrift}}</figcaption>
-                        </figure>
+                        </figure> #}
 
                     {% case "cta" %}
                         <div class="cta">
