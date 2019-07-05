@@ -10,13 +10,13 @@
 
 
 {# setting home parallax  #}
-{# {% if (entry.section.handle == 'home') %}
+{% if (entry.section.handle == 'home') %}
     {% if  entry.text|length %}
         {% include 'includes/parallaxHero' %}
     {% endif %}
 {% elseif entry.hero|length %}
     {% include 'includes/hero' %}
-{% endif %} #}
+{% endif %}
 
 {# setting everything else #}
 {% if entry.pageSection|length %}

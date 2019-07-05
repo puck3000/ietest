@@ -27,7 +27,9 @@
   },
   "postcss": {
     "plugins": {
-      "autoprefixer": {}
+      "autoprefixer": {
+        "grid": "autoplace"
+      }
     }
   },
   "browserslist": [

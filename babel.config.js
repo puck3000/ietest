@@ -3,11 +3,8 @@
 module.exports = {
   // https://cli.vuejs.org/config/#babel
   presets: [
-    ['@vue/app', {
-      polyfills: [
-        'es6.promise',
-        'es6.symbol'
-      ]
+    ['@babel/preset-env', {
+      "useBuiltIns": "entry" 
     }]
   ]
   // https://babeljs.io/docs/en/options#sourcetype

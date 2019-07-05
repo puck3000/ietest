@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import '@babel/polyfill'
 import Components from './components'
 import VueMq from 'vue-mq'
 import './styles/hamburgers.css'
