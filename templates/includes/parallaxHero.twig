@@ -9,12 +9,12 @@
 {% endfor %} #}
 
 {% if craft.imager.clientSupportsWebp() %}
-    {% set webpSupport = true %}
+    {% set webpsupport = true %}
 {% else %}
-    {% set webpSupport = false %}
+    {% set webpsupport = false %}
 {% endif %}
     
-<hero-parallax :herotext="{{herotext|json_encode}}" :parallaximages="{{parallaxImages|json_encode}}"></hero-parallax>
+<hero-parallax :herotext="{{herotext|json_encode}}" :webpSupport="{{webpsupport|json_encode}}"></hero-parallax>
 
 </div>
 

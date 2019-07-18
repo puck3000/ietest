@@ -1,9 +1,8 @@
 <template>
 <div class="parallax">
-    <div class="parallaxWrapper" v-cloak>
-        <img
+    <div class="parallaxWrapper" v-cloak >
+        <img v-if="webpsupport"
             src="/assets/parallaxium/SCHAFE-ZIEGEN_Parallax_C_768.webp"
-            onerror="this.onerror=null; this.src='/assets/parallaxium/SCHAFE-ZIEGEN_Parallax_C_768.png'"
             sizes="100vw"
             srcset="assets/parallaxium/SCHAFE-ZIEGEN_Parallax_C_1300.webp 1300w,
             assets/parallaxium/SCHAFE-ZIEGEN_Parallax_C_900.webp 900w,
@@ -12,9 +11,13 @@
             class="paral " 
             v-parallax.absY="0.5"
         >
-        <img
+        <img v-else src="/assets/parallaxium/SCHAFE-ZIEGEN_Parallax_C_768.png" 
+            alt="SchafeZiegen Parallax Bild C" 
+            class="paral " 
+            v-parallax.absY="0.5">
+
+        <img v-if="webpsupport"
             src="/assets/parallaxium/SCHAFE-ZIEGEN_Parallax_B_768.webp"
-            onerror="this.onerror=null; this.src='/assets/parallaxium/SCHAFE-ZIEGEN_Parallax_B_768.png'"
             sizes="100vw"
             srcset="assets/parallaxium/SCHAFE-ZIEGEN_Parallax_B_1300.webp 1300w,
             assets/parallaxium/SCHAFE-ZIEGEN_Parallax_B_900.webp 900w,
@@ -23,9 +26,13 @@
             class="paral " 
             v-parallax.absY="0.25"
         >
-        <img
+        <img v-else src="/assets/parallaxium/SCHAFE-ZIEGEN_Parallax_B_768.png" 
+            alt="SchafeZiegen Parallax Bild B" 
+            class="paral " 
+            v-parallax.absY="0.5">
+
+        <img v-if="webpsupport"
             src="/assets/parallaxium/SCHAFE-ZIEGEN_Parallax_A_768.webp"
-            onerror="this.onerror=null; this.src='/assets/parallaxium/SCHAFE-ZIEGEN_Parallax_A_768.png'"
             sizes="100vw"
             srcset="assets/parallaxium/SCHAFE-ZIEGEN_Parallax_A_1300.webp 1300w,
             assets/parallaxium/SCHAFE-ZIEGEN_Parallax_A_900.webp 900w,
@@ -34,6 +41,11 @@
             class="paral last" 
             v-parallax.absY="0"
         >
+        <img v-else src="/assets/parallaxium/SCHAFE-ZIEGEN_Parallax_A_768.png" 
+            alt="SchafeZiegen Parallax Bild A" 
+            class="paral " 
+            v-parallax.absY="0.5">
+
         <div class="herotext" v-parallax.absY="1">
             <div v-html="herotext" ></div>
         </div>
@@ -47,7 +59,7 @@
 <script>
 export default {
     name: "heroparallax",
-    props: ["herotext"],
+    props: ["herotext", "webpsupport"],
     methods: {
         reload: function() {
             this.$forceUpdate();
