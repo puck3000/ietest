@@ -83,6 +83,7 @@ export default {
 .parallaxWrapper 
     display: grid 
     grid-template-columns: 1fr
+    background-color: #06121a
     .paral
         grid-row-start: 1;
         grid-column-start: 1;

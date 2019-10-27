@@ -1,10 +1,12 @@
 // https://cli.vuejs.org/guide/browser-compatibility.html#browser-compatibility
-
 module.exports = {
   // https://cli.vuejs.org/config/#babel
   presets: [
-    ['@babel/preset-env', {
-      "useBuiltIns": "entry" 
+    ['@vue/app', {
+      polyfills: [
+        'es6.promise',
+        'es6.symbol'
+      ]
     }]
   ]
   // https://babeljs.io/docs/en/options#sourcetype
